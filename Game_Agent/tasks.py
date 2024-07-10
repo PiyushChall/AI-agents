@@ -5,6 +5,9 @@ from agents import chief_developer, qa_engineer, senior_developer
 from crewai import Task
 from tools import search_tool, web_search_tool
 
+game = input(
+    "What is the name of the game you want to create? (e.g. Pong, 2048, Tetris, etc): ")
+
 brainstorm = Task(description=dedent("""
     Brainstorm a game idea based on the instructions given.
     Research the game mechanics and design the game.
@@ -79,4 +82,4 @@ evaluation = Task(
     """),
     agent=chief_developer,
     async_execution=False,
-    output_file="new-game.py")
+    output_file=game+".py")

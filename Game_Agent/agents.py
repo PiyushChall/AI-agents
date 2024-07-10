@@ -17,7 +17,9 @@ senior_developer = Agent(
         you use your creativity and technical expertise to craft a masterpiece.
         """),
     llm=llm,
-    allow_delegation=True)
+    allow_delegation=True,
+    allow_code_execution=True
+)
 
 qa_engineer = Agent(
     role="QA Engineer",
@@ -35,7 +37,9 @@ qa_engineer = Agent(
         You are adept at spotting and fixing errors.
         """),
     llm=llm,
-    allow_delegation=True)
+    allow_delegation=True,
+    allow_code_execution=True
+)
 
 chief_developer = Agent(
     role="Chief Developer",
@@ -51,4 +55,6 @@ chief_developer = Agent(
     """),
     tools=[search_tool],
     llm=llm,
-    allow_delegation=True)
+    allow_delegation=True,
+    allow_code_execution=True
+)
