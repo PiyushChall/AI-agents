@@ -1,4 +1,3 @@
-
 import pygame
 import pygame.font
 
@@ -24,11 +23,11 @@ paddle_height = 60
 ball_size = 10
 
 # Paddle speed
-paddle_speed = 0.2
+paddle_speed = 0.5
 
 # Ball speed
-ball_x_speed = 0.1
-ball_y_speed = 0.1
+ball_x_speed = 0.3
+ball_y_speed = 0.3
 
 # Score
 player1_score = 0
@@ -54,10 +53,18 @@ while running:
 
     # Player 1 controls
     keys = pygame.key.get_pressed()
-    player1_y = max(0, min(player1_y + paddle_speed * (keys[pygame.K_s] - keys[pygame.K_w]), screen_height - paddle_height))
+    player1_y = max(
+        0,
+        min(player1_y + paddle_speed * (keys[pygame.K_s] - keys[pygame.K_w]),
+            screen_height - paddle_height))
 
     # Player 2 controls
-    player2_y = max(0, min(player2_y + paddle_speed * (keys[pygame.K_DOWN] - keys[pygame.K_UP]), screen_height - paddle_height))
+    player2_y = max(
+        0,
+        min(
+            player2_y + paddle_speed *
+            (keys[pygame.K_DOWN] - keys[pygame.K_UP]),
+            screen_height - paddle_height))
 
     # Ball movement
     ball_x += ball_x_speed
@@ -91,7 +98,8 @@ while running:
     # Draw paddles
     player1_rect = pygame.Rect(0, player1_y, paddle_width, paddle_height)
     pygame.draw.rect(screen, white, player1_rect)
-    player2_rect = pygame.Rect(screen_width - paddle_width, player2_y, paddle_width, paddle_height)
+    player2_rect = pygame.Rect(screen_width - paddle_width, player2_y,
+                               paddle_width, paddle_height)
     pygame.draw.rect(screen, white, player2_rect)
 
     # Draw ball
@@ -101,7 +109,8 @@ while running:
     # Display score
     font = pygame.font.Font(None, 36)
     score_text = font.render(f"{player1_score} - {player2_score}", True, white)
-    screen.blit(score_text, (screen_width // 2 - score_text.get_width() // 2, 10))
+    screen.blit(score_text,
+                (screen_width // 2 - score_text.get_width() // 2, 10))
 
     # Update the display
     pygame.display.flip()

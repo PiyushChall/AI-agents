@@ -43,7 +43,9 @@ programming = Task(
     Your final output should be the python code for the game only,
     and nothing else.
     """),
-    agent=senior_developer)
+    agent=senior_developer,
+    Context=brainstorm,
+)
 
 reviewing = Task(
     description=dedent("""
@@ -62,7 +64,9 @@ reviewing = Task(
     expected_output=dedent("""
     Your final output must be the full python code and nothing else.
     """),
-    agent=qa_engineer)
+    agent=qa_engineer,
+    Context=programming,
+)
 
 evaluation = Task(
     description=dedent("""
@@ -82,4 +86,5 @@ evaluation = Task(
     """),
     agent=chief_developer,
     async_execution=False,
+    Context=reviewing,
     output_file=game+".py")

@@ -4,7 +4,7 @@ from crewai import Agent
 from tools import llm, search_tool, web_search_tool
 
 factFinder = Agent(
-    name="Kara",
+    name="Marcus",
     role="Senior Researcher",
     goal=dedent(
         """
@@ -28,7 +28,7 @@ factFinder = Agent(
     allow_delegation=True)
 
 wordWeaver = Agent(
-    name="Markus",
+    name="Connor",
     role="Chief Writer",
     goal=dedent(
         """
